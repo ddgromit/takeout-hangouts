@@ -1,4 +1,7 @@
-_ = require('underscore')
+if window?
+  _ = window._
+else
+  _ = require('underscore')
 
 class HangoutReader
   constructor: (data) ->
@@ -8,6 +11,8 @@ class HangoutReader
     _(@data.conversation_state).map (convo_obj) ->
       new Conversation(convo_obj.conversation_state)
 
+  conversationById: (id) ->
+    _(@conversations()).chain().filter((conversation) -> conversation.id() == id).first().value()
 
 
 class Conversation
@@ -15,6 +20,8 @@ class Conversation
     @data = data
 
   name: -> @data.conversation.name
+
+  id: -> @data.conversation.id.id
 
   participants: ->
     _.map @data.conversation.participant_data, (participant) ->
@@ -80,4 +87,5 @@ class User
     @name = name
 
 
-module.exports = HangoutReader
+root = if module? && module.exports? then module.exports else window
+root.HangoutReader = HangoutReader

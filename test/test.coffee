@@ -1,7 +1,7 @@
 assert = require 'assert'
 should = require('chai').should()
-hangout = require '../lib/hangout.js'
+hangouts = require '../lib/hangout.js'
 
-describe 'nanomsg', ->
-  it 'should at least work', ->
-    console.log 'blah'
+describe 'hangouts', ->
+  it 'should have a reader', ->
+    hangouts.HangoutReader.should.not.be.undefined
