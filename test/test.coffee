@@ -1,6 +1,8 @@
 assert = require 'assert'
 should = require('chai').should()
+HangoutReader = require('..')
 
 describe 'hangouts', ->
   it 'should have a reader', ->
-    hangouts.HangoutReader.should.not.be.undefined
+    console.log(HangoutReader)
+    HangoutReader.should.not.be.undefined
