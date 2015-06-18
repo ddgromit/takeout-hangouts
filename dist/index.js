@@ -33,6 +33,13 @@ var HangoutReader = (function () {
         return new Conversation(convo_obj.conversation_state);
       });
     }
+  }, {
+    key: 'conversation',
+    value: function conversation(id) {
+      return _lodash2['default'].find(this.conversations(), function (convo) {
+        return convo.id() == id;
+      });
+    }
   }]);
 
   return HangoutReader;

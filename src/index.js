@@ -14,6 +14,12 @@ export default class HangoutReader {
       return new Conversation(convo_obj.conversation_state);
     });
   }
+  
+  conversation(id) {
+    return _.find(this.conversations(), (convo) => {
+      return convo.id() == id;
+    });
+  }
 }
 
 
