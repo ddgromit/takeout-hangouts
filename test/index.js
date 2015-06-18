@@ -1,11 +1,16 @@
-import chai from 'chai';
-
-chai.should();
+import { assert } from 'chai';
+import HangoutReader from '../src/index';
 
 export default {
   'SmokeTest': {
     'tests should work': function() {
-      (1).should.equal(1);
+      assert.equal(1, 1);
+    }
+  },
+  
+  'HangoutReader': {
+    'should be able to load': function() {
+      let reader = new HangoutReader({conversation_state: [] });
     }
   }
 }

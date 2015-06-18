@@ -2,17 +2,18 @@
   "name": "google-takeout-hangouts",
   "version": "0.0.1",
   "description": "Wrapper for Google Hangouts JSON data exported from Google Takeout",
-  "main": "lib/hangout.js",
+  "main": "dist/index.js",
   "directories": {
     "test": "test"
   },
   "dependencies": {
-    "chai": "^1.8.1",
     "backbone": "^1.1.0",
-    "underscore": "^1.5.2",
+    "chai": "^1.8.1",
     "grunt": "^0.4.2",
     "grunt-contrib-coffee": "^0.7.0",
-    "grunt-mocha-test": "^0.8.1"
+    "grunt-mocha-test": "^0.8.1",
+    "lodash": "^3.9.3",
+    "underscore": "^1.5.2"
   },
   "devDependencies": {
     "babel": "^5.5.8",
