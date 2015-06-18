@@ -57,6 +57,8 @@ class Message
     else
       ""
 
+  html: ->
+    
   prettyText: -> "#{@date()} #{@sender.name}: #{@text()}"
 
   segmentCount: ->
