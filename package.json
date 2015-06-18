@@ -1,0 +1,36 @@
+{
+  "name": "google-takeout-hangouts",
+  "version": "0.0.1",
+  "description": "Wrapper for Google Hangouts JSON data exported from Google Takeout",
+  "main": "lib/hangout.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "chai": "^1.8.1",
+    "backbone": "^1.1.0",
+    "underscore": "^1.5.2",
+    "grunt": "^0.4.2",
+    "grunt-contrib-coffee": "^0.7.0",
+    "grunt-mocha-test": "^0.8.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddgromit/takeout-hangouts.git"
+  },
+  "keywords": [
+    "google",
+    "hangouts",
+    "takeout"
+  ],
+  "author": "Derek Dahmer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ddgromit/takeout-hangouts/issues"
+  },
+  "homepage": "https://github.com/ddgromit/takeout-hangouts#readme"
+}
