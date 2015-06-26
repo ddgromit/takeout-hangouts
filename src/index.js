@@ -4,7 +4,7 @@ export default class HangoutReader {
   constructor(data) {
     this.data = data
   }
-  
+
   getFive() {
     return 5;
   }
@@ -14,7 +14,7 @@ export default class HangoutReader {
       return new Conversation(convo_obj.conversation_state);
     });
   }
-  
+
   conversation(id) {
     return _.find(this.conversations(), (convo) => {
       return convo.id() == id;
@@ -27,11 +27,11 @@ class Conversation {
   constructor(data) {
     this.data = data;
   }
-  
+
   name() {
     return this.data.conversation.name;
   }
-  
+
   id() {
     return this.data.conversation.id.id;
   }
