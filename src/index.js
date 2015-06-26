@@ -35,6 +35,29 @@ class Conversation {
   id() {
     return this.data.conversation.id.id;
   }
+
+  isGroupChat() {
+    this.data.conversation.type == "GROUP";
+  }
+
+  lastReadAt() {
+    let ts = parseInt(this.data.conversation.self_conversation_state.self_read_state.latest_read_timestamp);
+    return new Date(ts / 1000);
+  }
+
+  createdAt() {
+    let ts = parseInt(this.data.conversation.self_conversation_state.active_timestamp);
+    return new Date(ts / 1000);
+  }
+
+  sortTime() {
+    let ts = parseInt(this.data.conversation.self_conversation_state.sort_timestamp);
+    return new Date(ts / 1000);
+  }
+
+  messages() {
+
+  }
 }
 
 class Message {

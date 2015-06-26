@@ -7,7 +7,7 @@ export default {
       assert.equal(1, 1);
     }
   },
-  
+
   'HangoutReader': {
     'should be able to load': function() {
       let reader = new HangoutReader({conversation_state: [] });
