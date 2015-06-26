@@ -1,12 +1,9 @@
 import _ from 'lodash';
+import tsToDate from './utils/tsToDate';
 
 export default class HangoutReader {
   constructor(data) {
     this.data = data
-  }
-
-  getFive() {
-    return 5;
   }
 
   conversations() {
@@ -41,27 +38,43 @@ class Conversation {
   }
 
   lastReadAt() {
-    let ts = parseInt(this.data.conversation.self_conversation_state.self_read_state.latest_read_timestamp);
-    return new Date(ts / 1000);
+    return tsToDate(this.data.conversation.self_conversation_state.self_read_state.latest_read_timestamp);
   }
 
   createdAt() {
-    let ts = parseInt(this.data.conversation.self_conversation_state.active_timestamp);
-    return new Date(ts / 1000);
+    return tsToDate(this.data.conversation.self_conversation_state.active_timestamp);
   }
 
   sortTime() {
-    let ts = parseInt(this.data.conversation.self_conversation_state.sort_timestamp);
-    return new Date(ts / 1000);
+    return tsToDate(this.data.conversation.self_conversation_state.sort_timestamp);
   }
 
   messages() {
-
+    return this.data.event
+      .map((e) => { return messageFactory(e) });
   }
 }
 
-class Message {
+function messageFactory(event) {
+  return new Message(event);
+}
 
+class Message {
+  constructor(data) {
+    this.data = data;
+  }
+
+  id() {
+    return this.data.event_id;
+  }
+
+  senderId() {
+    return this.data.sender_id.chat_id;
+  }
+
+  sentAt() {
+    return tsToDate(this.data.timestamp);
+  }
 }
 
 class User {
