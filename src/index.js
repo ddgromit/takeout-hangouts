@@ -56,6 +56,22 @@ class Conversation {
 }
 
 function messageFactory(event) {
+  switch (event.event_type) {
+    case "REGULAR_CHAT_MESSAGE":
+      return new ChatMessage(event);
+      break;
+    case "RENAME_CONVERSATION":
+      return new Message(event);
+      break;
+    case "START_HANGOUT":
+      return new Message(event);
+      break;
+    case "END HANGOUT":
+      return new Message(event);
+      break;
+    default:
+      return new Message(event);
+  }
   return new Message(event);
 }
 
@@ -74,6 +90,27 @@ class Message {
 
   sentAt() {
     return tsToDate(this.data.timestamp);
+  }
+
+  eventType() {
+    return this.data.event_type;
+  }
+}
+
+class ChatMessage extends Message {
+  constructor(data) {
+    super(data);
+  }
+
+  allText() {
+    return this.segments()
+      .map((segment) => { return segment.text })
+      .join(',');
+  }
+
+  segments() {
+    let segments = this.data.chat_message.message_content.segment;
+    return segments ? segments : [];
   }
 }
 
